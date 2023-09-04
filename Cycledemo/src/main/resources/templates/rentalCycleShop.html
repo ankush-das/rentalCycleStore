@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #36393f;
+			color: #ffffff;
+			margin: 0;
+			padding: 0;
+		}
+
+		.card {
+			background-color: #2e3338;
+			border-radius: 5px;
+			margin: 20px;
+			padding: 10px;
+		}
+
+		h3 {
+			background-color: #7289da;
+			color: #ffffff;
+			padding: 10px;
+			margin: 0;
+		}
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+		}
+
+		li {
+			margin: 10px 0;
+		}
+		
+		  .add-cycle-form {
+            background-color: #2e3338;
+            border-radius: 5px;
+            margin: 20px;
+            padding: 10px;
+        }
+
+        .add-cycle-button {
+            background-color: #7289da;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+	</style>
+</head>
+
+<body>
+	<h3>All Cycle</h3>
+	
+	<div class="add-cycle-form">
+        <form th:action="@{/addCycle}" method="post">
+            <label for="brand">Brand:</label>
+            <input type="text" id="brand" name="brand" required>
+            <br>
+            <label for="color">Color:</label>
+            <input type="text" id="color" name="color" required>
+            <br>
+            <button type="submit" class="add-cycle-button">Add Cycle</button>
+        </form>
+    </div>
+    
+	<div class="card" th:each="cyc : ${cycleList}">
+		<ul>
+			<li><strong>ID:</strong> <span th:text="${cyc.id}"></span></li>
+			<li><strong>Brand:</strong> <span th:text="${cyc.brand}"></span></li>
+			<li><strong>Color:</strong> <span th:text="${cyc.color}"></span></li>
+			<li><strong>Available:</strong> <span th:text="${cyc.available}"></span></li>
+			<li>
+				<form th:action="@{/rent/{id}(id=${cyc.id})}" method="post">
+					<button type="submit">Rent</button>
+				</form>
+			</li>
+		</ul>
+	</div>
+</body>
+
+</html>

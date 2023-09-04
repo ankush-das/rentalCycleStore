@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Cycle</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #36393f;
+			color: #ffffff;
+			margin: 0;
+			padding: 0;
+		}
+
+		.card {
+			background-color: #2e3338;
+			border-radius: 5px;
+			margin: 20px;
+			padding: 10px;
+		}
+
+		h3 {
+			background-color: #7289da;
+			color: #ffffff;
+			padding: 10px;
+			margin: 0;
+		}
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+		}
+
+		li {
+			margin: 10px 0;
+		}
+	</style>
+</head>
+
+<body>
+	<h3>Available Cycle</h3>
+	<div class="card" th:each="cyc : ${availablecycleList}">
+		<ul>
+			<li><strong>ID:</strong> <span th:text="${cyc.id}"></span></li>
+			<li><strong>Brand:</strong> <span th:text="${cyc.brand}"></span></li>
+			<li><strong>Color:</strong> <span th:text="${cyc.color}"></span></li>
+			<li><strong>Available:</strong> <span th:text="${cyc.available}"></span></li>
+		</ul>
+	</div>
+</body>
+
+</html>

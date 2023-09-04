@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+		*{
+			background-color: lightgrey;
+		}
+        /* Style for the table */
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 50%;
+            margin: 20px auto; /* Center the table on the page */
+            border: 1px solid #4f545c; /* Discord-like border color */
+            background-color: #36393f; /* Discord's dark background color */
+        }
+
+        /* Style for table header cells */
+        th {
+            background-color: #202225; /* Discord's header background color */
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #4f545c; /* Discord-like border color */
+            color: #ffffff; /* White text color */
+        }
+
+        /* Style for table data cells */
+        td {
+            border: 1px solid #4f545c; /* Discord-like border color */
+            text-align: left;
+            padding: 8px;
+            background-color: #2f3136; /* Discord's table cell background color */
+            color: #ffffff; /* White text color */
+        }
+
+        /* Style for links */
+        a {
+            color: #7289DA; /* Discord's link color */
+        }
+
+        /* Style for headers */
+        h1 {
+            color: black; /* White text color */
+            font-family: "Helvetica Neue", sans-serif; /* Discord's default font */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>All Cycle Stock</h1>
+    <table>
+        <tr>
+            <th>Cycle</th>
+            <th>Count</th>
+        </tr>
+        <tr th:each="entry : ${cycleCountMap}">
+            <td th:text="${entry.key}"></td>
+            <td th:text="${entry.value}"></td>
+        </tr>
+    </table>
+
+    <h1>Borrowed Cycle Stock</h1>
+    <table>
+        <tr>
+            <th>Cycle</th>
+            <th>Count</th>
+        </tr>
+        <tr th:each="entry : ${BcycleCountMap}">
+            <td th:text="${entry.key}"></td>
+            <td th:text="${entry.value}"></td>
+        </tr>
+    </table>
+
+    <h1>Available Cycle Stock</h1>
+    <table>
+        <tr>
+            <th>Cycle</th>
+            <th>Count</th>
+        </tr>
+        <tr th:each="entry : ${AcycleCountMap}">
+            <td th:text="${entry.key}"></td>
+            <td th:text="${entry.value}"></td>
+        </tr>
+    </table>
+</body>
+
+</html>
